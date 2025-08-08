@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Service } from '../service';
+import { Router } from '@angular/router';
 import { UserData } from '../user-data';
 import { FormsModule } from '@angular/forms';
 
@@ -19,10 +20,10 @@ export class Home {
   managerCommentsUI = 'none';
   tempData: any;
 
-  constructor(private myService: Service) {
+  constructor(private myService: Service,private router: Router) {
     this.currentUser = localStorage.getItem('currentUser');
     if (this.currentUser == '') {
-      location.replace('https://manager-monitoringtool.netlify.app/');
+      this.router.navigate(['/']);
     }
     if (this.currentUser == 'Manager') {
       this.userData = this.myService.usersData.reverse();
@@ -80,7 +81,7 @@ export class Home {
 
   refresh() {
     localStorage.setItem('currentUser', '');
-    location.replace('https://manager-monitoringtool.netlify.app/');
+    this.router.navigate(['/']);
   }
 
   checker(data: any) {
