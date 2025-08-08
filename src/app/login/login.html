@@ -1,0 +1,22 @@
+<div class="container">
+    <div style="text-align:center;">
+    <img src="https://www.cognizant.com/us/media_1808da395be9f77c0124de824530b0338915414a8.svg?width=2000&format=webply&optimize=medium"/>
+    </div>
+    <h2 style="padding:20px 0px 15px 0px;font-size:25px;text-align:center;">Welcome to Manager Monitoring Tool</h2>
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <form class="border">
+            <div class="err">{{error}}</div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Name</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" [(ngModel)]="username"
+                    [ngModelOptions]="{standalone: true}" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="password"
+                    [ngModelOptions]="{standalone: true}" required>
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
+        </form>
+    </div>
+</div>

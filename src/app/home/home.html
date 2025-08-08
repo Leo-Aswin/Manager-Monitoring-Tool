@@ -1,0 +1,50 @@
+<div class="position-absolute top-0 start-50 translate-middle-x">
+    <form class="border">
+        <div style="text-align: center;margin-bottom:15px;font-weight:bold;">Hi, {{currentUser}} have a good day!</div>
+        <div class="mb-3">
+            <input type="text" class="form-control" [(ngModel)]="title" placeholder="Description"
+                [ngModelOptions]="{standalone: true}" id="title" required>
+        </div>
+        <div class="form-floating mb-3">
+            <textarea class="form-control" style="height: 100px" [(ngModel)]="comments"
+                [ngModelOptions]="{standalone: true}" placeholder="Leave a comment here" id="floatingTextarea"
+                required></textarea>
+            <label for="floatingTextarea">Work Notes</label>
+        </div>
+        <div class="form-floating mb-3" [style.display]="managerCommentsUI">
+            <textarea class="form-control" style="height: 100px" [(ngModel)]="managerComments"
+                [ngModelOptions]="{standalone: true}" placeholder="Leave a comment here" id="floatingTextarea"
+                required></textarea>
+            <label for="floatingTextarea">Manager Comments</label>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
+    </form>
+</div>
+<div class="list">
+    <ul class="list-group">
+        @for (user of userData; track user) {
+        <li class="list-group-item">
+            <h4 style="font-size: 20px;">{{user.name}}</h4>
+            <label style="color:cadetblue">Description:&ensp;</label>
+            <label>{{user.title}}</label>
+            <p></p>
+            <label style="color:cadetblue">Work Notes:&ensp;</label>
+            <label>{{user.desc}}</label>
+            <p></p>
+            <label style="color:cadetblue">Manager Comments:&ensp;</label>
+            <label>{{user.manager}}</label>
+            <label [style.display]="checker(user.manager)">Pending</label>
+            <p></p>
+            <div [style.display]="managerCommentsUI">
+                <div [style.display]="checker(user.manager)">
+                    <button type="submit" class="btn btn-primary" (click)="update(user.name,user.title,user.desc)">My
+                        comments</button>
+                </div>
+            </div>
+        </li>
+        }
+    </ul>
+</div>
+<div class="button">
+    <button type="button" class="btn btn-danger" (click)="refresh()">Go Back</button>
+</div>
