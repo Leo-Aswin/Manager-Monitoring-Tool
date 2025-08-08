@@ -29,7 +29,7 @@ export class Login {
         if(data.password == this.password){
           this.error = "";
           localStorage.setItem('currentUser',data.username);
-          location.replace('http://localhost:4200/data');
+          location.replace('https://manager-monitoringtool.netlify.app/data');
         }
         else{
           this.error = "Password Mismatch";
