@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Service } from '../service';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -16,7 +17,7 @@ export class Login {
   error = "";
   c = 0;
 
-  constructor(private myService:Service) {}
+  constructor(private myService: Service,private router: Router) {}
 
   ngOnInit(): void {
     this.userData = this.myService.UserDetails; 
@@ -29,7 +30,7 @@ export class Login {
         if(data.password == this.password){
           this.error = "";
           localStorage.setItem('currentUser',data.username);
-          location.replace('https://manager-monitoringtool.netlify.app/data');
+          this.router.navigate(['/data']);
         }
         else{
           this.error = "Password Mismatch";
