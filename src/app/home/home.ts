@@ -22,7 +22,7 @@ export class Home {
   constructor(private myService: Service) {
     this.currentUser = localStorage.getItem('currentUser');
     if (this.currentUser == '') {
-      location.replace('http://localhost:4200/');
+      location.replace('https://manager-monitoringtool.netlify.app/');
     }
     if (this.currentUser == 'Manager') {
       this.userData = this.myService.usersData.reverse();
@@ -80,7 +80,7 @@ export class Home {
 
   refresh() {
     localStorage.setItem('currentUser', '');
-    location.replace('http://localhost:4200/');
+    location.replace('https://manager-monitoringtool.netlify.app/');
   }
 
   checker(data: any) {
